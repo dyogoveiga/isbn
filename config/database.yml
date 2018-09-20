@@ -6,3 +6,12 @@ development:
   username: postgres
   password: postgres
   host: localhost
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: isbn_test
+  pool: 5
+  username: postgres
+  password: postgres
+  host: localhost

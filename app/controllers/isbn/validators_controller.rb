@@ -5,7 +5,7 @@ class Isbn::ValidatorsController < ApplicationController
     else
       render json: { valid: false, message: 'ISBN number validated without success.' }, status: :ok
     end
-  rescue StandardError, Isbn::Validator::InvalidArgumentError
+  rescue StandardError, ArgumentError
     render json: {}, status: :internal_server_error
   end
 end

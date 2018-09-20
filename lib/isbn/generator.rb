@@ -4,10 +4,8 @@ module Isbn
     ISBN_BASE_SIZE = 12
     DIVIDER_NUMBER = 10
 
-    class InvalidArgumentError < StandardError; end
-
     def self.generate(number)
-      raise InvalidArgumentError if number.to_s.size != ISBN_BASE_SIZE
+      raise ArgumentError if number.to_s.size != ISBN_BASE_SIZE
 
       result = number.split('').map(&:to_i).each_with_index.map do |value, index|
         value * (index.even? ? 1 : 3)
