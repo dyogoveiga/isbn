@@ -14,3 +14,4 @@
 //= require js-routes
 //= require cable
 //= require components/form-validator
+//= require components/form-generator

@@ -2,35 +2,31 @@ $(function () {
   (function () {
 
     // cache DOM
-    var $element       = $('[data-component="isbn-validator"]');
+    var $element       = $('[data-component="isbn-generator"]');
     var $form          = $element.find('form');
     var $input         = $element.find('input');
     var $submitButton  = $element.find('button');
 
-    var ISBN_SIZE = 13;
+    var ISBN_SIZE = 12;
 
     function doRequest (e) {
       e.preventDefault();
       e.stopPropagation();
 
-
       if(!$submitButton.hasClass('disabled')) {
-        $.post(Routes.isbn_validator_path(), { isbn_number: $input.val() })
+        $.post(Routes.isbn_generator_path(), { isbn_number: $input.val() })
         .done(function (data) {
-           if(data['valid']) {
-             changeToSuccess();
-           } else {
-             changeToFailure();
-           }
+          changeToSuccess(data);
         }).fail(function (data) {
           changeToFailure();
         })
       }
     }
 
-    function changeToSuccess () {
+    function changeToSuccess (data) {
       $form.addClass('success');
       $form.find('i.fa').addClass('fa-check');
+      $('.response-number').text(data.number);
     }
 
     function changeToFailure () {
@@ -41,10 +37,11 @@ $(function () {
     function clearStatus () {
       $form.removeClass(['success', 'failure']);
       $form.find('i.fa').removeClass(['fa-check', 'fa-times']);
+      $('.response-number').text('');
     }
 
     function filterValue () {
-      var value = $input.val().replace(/\D/g,'').substring(0, 13);
+      var value = $input.val().replace(/\D/g,'').substring(0, 12);
       $input.val(value);
     }
 

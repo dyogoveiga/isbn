@@ -65,4 +65,12 @@
   input {
     position: relative;
   }
+
+  .response-number {
+    margin-top: 5px;
+    border: 1px solid #666;
+    padding: 8px 13px;
+    border-radius: 3px;
+    text-align: center;
+  }
 }
