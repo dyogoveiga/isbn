@@ -1,6 +1,5 @@
 class Isbn::ValidatorsController < ApplicationController
   def create
-    IsbnValidatorNotificationsChannel.receive({foo: 1})
     if(Isbn::Validator.valid?(params['isbn_number']))
       render json: { valid: true, message: 'ISBN number validated with success.' }, status: :ok
     else
