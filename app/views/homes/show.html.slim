@@ -1,0 +1,30 @@
+
+.row.justify-content-md-center
+  .col-md-6
+    ul.nav.nav-tabs.form-tabs role="tablist"
+      li.nav-item
+        a.nav-link.active data-toggle="tab" href="#form-validator-container" role="tab" Validator
+      li.nav-item
+        a.nav-link data-toggle="tab" href="#form-generator-container" role="tab"  Generator
+
+    .tab-content
+      #form-validator-container.tab-pane.fade.show.active role="tabpanel"
+        .form-validator--main data-component="isbn-validator"
+          h1 ISBN Validator
+          form
+            .form-group
+              i.fa
+              input.form-control placeholder="Ex:.. 4323124512429" type="text"
+              small.form-text.text-muted Enter the value you want validate. (13 digits)
+            .text-center
+              button.btn.btn-primary.btn-block.disabled type="submit" Process
+      #form-generator-container.tab-pane.fade role="tabpanel"
+        .form-generator--main data-component="isbn-generator"
+          h1 ISBN Generator
+          form
+            .form-group
+              i.fa
+              input.form-control placeholder="Ex:.. 432312451242" type="text"
+              small.form-text.text-muted Enter the value you want generate. (12 digits)
+            .text-center
+              button.btn.btn-primary.btn-block type="submit" Process

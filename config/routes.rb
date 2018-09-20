@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resource :search, only: :show
+  mount ActionCable.server => '/cable'
 
-  root to: 'searchs#show'
+  root to: 'homes#show'
+  namespace 'isbn' do
+    resource :validator, only: :create
+  end
 end
